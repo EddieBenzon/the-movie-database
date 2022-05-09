@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 import { IoPlay } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { useGlobalContext } from "./context";
-import { useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();

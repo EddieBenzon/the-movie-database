@@ -6,7 +6,6 @@ const reducer = (state, action) => {
     return { ...state, movies: action.payload, loading: false };
   }
   if (action.type === "SET_SEARCH_TERM") {
-    // console.log(action.payload, state);
     return {
       ...state,
       searchTerm: action.payload,
@@ -14,7 +13,6 @@ const reducer = (state, action) => {
     };
   }
   if (action.type === "DISPLAY_TITLES") {
-    // console.log(action.payload, state);
     return { ...state, movies: action.payload, loading: false };
   }
   if (action.type === "SET_GENRE") {

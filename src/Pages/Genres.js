@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import MovieCard from "../Components/MovieCard";
 import { useGlobalContext } from "../Components/context";
 import Loading from "../Components/Loading";

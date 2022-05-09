@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useReducer } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 import reducer from "../reducer";
 
 const titleurl = "https://imdb-api.com/API/AdvancedSearch/k_h0i49j2g?title=";
@@ -13,7 +13,7 @@ const initialState = {
   movies: [],
   loading: false,
   searchTerm: "",
-  headlineContent: "Most Popular Movies",
+  headlineContent: "Trending Movies",
   genre: "popular",
 };
 
@@ -35,8 +35,6 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "DISPLAY_TITLES", payload: titleResults });
   };
 
-  //REACT QUERY
-
   const fetchMostPopular = async () => {
     dispatch({ type: "LOADING" });
     const response = await fetch(defaulturl);
@@ -51,9 +49,9 @@ const AppProvider = ({ children }) => {
     const res = await fetch(`${genreURL}&genres=${x}`);
     const data = await res.json();
     const genreResults = await [...data.results];
-    genreResults.splice(100, 150);
     dispatch({ type: "DISPLAY_GENRES", payload: genreResults });
   };
+
   useEffect(() => {
     fetchMostPopular();
   }, []);

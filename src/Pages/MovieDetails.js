@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Loading from "../Components/Loading";
-import { useNavigate } from "react-router-dom";
 
 const idURL = "https://imdb-api.com/en/API/Title/k_h0i49j2g/";
 

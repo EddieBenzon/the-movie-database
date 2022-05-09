@@ -1,12 +1,17 @@
 import Results from "./Components/Results";
 import Navbar from "./Components/Navbar";
 import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 import Error from "./Pages/Error";
 import MovieDetails from "./Pages/MovieDetails";
 import About from "./Pages/About.js";
 import Genres from "./Pages/Genres";
 
 function App() {
+  useEffect(() => {
+    document.title = "The Movie Database";
+  }, []);
+
   return (
     <>
       <Navbar />
