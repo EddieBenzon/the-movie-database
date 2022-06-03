@@ -83,21 +83,34 @@ const MovieDetails = () => {
         <Loading />
       ) : (
         <div className="movie-details-container">
+          <div className="img-container"></div>
           <img src={image} alt={title} />
           <div className="movie-details-info">
             <h3 className="movie-details-title">{title}</h3>
-            <h5>Release Date:</h5>
-            <p>{release ? release : "N/A"}</p>
-            <h5>Runtime:</h5>
-            <p>{runtime ? runtime : "N/A"}</p>
-            <h5>Directors:</h5>
-            <p>{directors ? directors : "N/A"}</p>
-            <h5>Stars:</h5>
-            <p>{stars ? stars : "N/A"}</p>
-            <h5>Plot:</h5>
-            <p>{plot ? plot : "N/A"}</p>
-            <h5>IMDb Rating:</h5>
-            <p>{rating ? rating : "N/A"}</p>
+            <div>
+              <h5>Release Date:</h5>
+              <p>{release ? release : "N/A"}</p>
+            </div>
+            <div>
+              <h5>Runtime:</h5>
+              <p>{runtime ? runtime : "N/A"}</p>
+            </div>
+            <div>
+              <h5>Directors:</h5>
+              <p>{directors ? directors : "N/A"}</p>
+            </div>
+            <div>
+              <h5>Stars:</h5>
+              <p>{stars ? stars : "N/A"}</p>
+            </div>
+            <div>
+              <h5>Plot:</h5>
+              <p>{plot ? plot : "N/A"}</p>
+            </div>
+            <div>
+              <h5>IMDb Rating:</h5>
+              <p>{rating ? rating : "N/A"}</p>
+            </div>
             <button onClick={backButton}>Back</button>
           </div>
         </div>

@@ -12,9 +12,14 @@
   box-sizing: border-box;
 }
 
+h4 {
+  animation: zipRight 0.25s;
+}
+
 body {
   background-color: rgb(61, 61, 61);
 }
+
 .loading-animation {
   margin: 150px auto 0px auto;
   border: 8px solid var(--blue-dark);
@@ -24,12 +29,6 @@ body {
   height: 200px;
   animation: 2s linear infinite;
   animation-name: spin;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 /* Navbar styles */
@@ -97,7 +96,8 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
-.btn-link {
+.btn-link,
+.btn-genres {
   color: white;
   background-color: var(--blue-primary);
   border-radius: 0.25rem;
@@ -115,6 +115,15 @@ body {
 }
 
 .btn-link:active {
+  cursor: pointer;
+  background-color: var(--blue-dark);
+}
+.btn-genres:hover {
+  cursor: pointer;
+  background-color: var(--blue-light);
+}
+
+.btn-genres:active {
   cursor: pointer;
   background-color: var(--blue-dark);
 }
@@ -152,6 +161,7 @@ h4 {
   color: white;
   justify-content: space-between;
   transition: width 0.2s, height 0.2s, margin 0.2s;
+  animation: fadeIn 1s;
 }
 .grid-item:hover {
   cursor: pointer;
@@ -168,6 +178,7 @@ h4 {
   border-top-right-radius: 0.5rem;
   object-fit: cover;
   height: 85%;
+  animation: fadeIn 3s;
 }
 .grid-item-info {
   border-bottom-left-radius: 0.5rem;
@@ -196,12 +207,13 @@ h4 {
   display: flex;
   flex-direction: row;
   width: 55%;
-  margin: 35px auto 0px auto;
+  margin: 35px auto 35px auto;
 }
 
 .movie-details-container img {
-  width: 40%;
+  width: 60%;
   object-fit: cover;
+  animation: fadeIn 3s;
 }
 .movie-details-info {
   margin-left: 20px;
@@ -215,18 +227,21 @@ h4 {
   font-size: 30px;
   font-weight: 600;
   color: var(--blue-primary);
+  animation: zipRight 0.3s;
 }
 .movie-details-info h5 {
   color: var(--blue-primary);
   margin-top: 10px;
   font-size: 24px;
   font-weight: 500;
+  animation: zipRight 0.3s;
 }
 .movie-details-info p {
   color: white;
   line-height: 21px;
   font-weight: 100;
   font-size: 20px;
+  animation: zipRight 0.5s;
 }
 .movie-details-info button {
   margin-top: 15px;
@@ -241,6 +256,7 @@ h4 {
   padding: 6px 10px;
   text-align: center;
   align-self: flex-end;
+  animation: zipRight 0.5s;
 }
 .movie-details-info button:hover {
   background-color: var(--blue-light);
@@ -297,6 +313,7 @@ h4 {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
+  animation: fadeIn 1s;
 }
 .btn-genre {
   margin-top: 20px;
@@ -397,7 +414,7 @@ h4 {
     min-width: 100px;
     align-items: center;
   }
-  .btn-link {
+  .btn-genres {
     margin: 0 0 10px 0;
   }
   .about-main {
@@ -414,14 +431,18 @@ h4 {
     width: 10%;
     min-width: 100px;
   }
+  .btn-genres {
+    margin: 0;
+  }
   .btn-link {
-    margin: 10px 10px 0 0;
+    margin: 10px 0 0 0;
   }
   .movie-details-container {
     width: 95%;
   }
   .movie-details-container img {
     width: 50%;
+    object-fit: contain;
   }
   .movie-details-info {
     width: 50%;
@@ -443,6 +464,22 @@ h4 {
   }
   .btn-container {
     flex-direction: row;
+  }
+  .btn-genres,
+  .btn-link {
+    margin: 10px 10px 0 0;
+  }
+  .movie-details-container {
+    flex-direction: column;
+    width: 100%;
+  }
+  .movie-details-container img {
+    width: 100%;
+    margin-bottom: 18px;
+  }
+  .movie-details-info {
+    width: 100%;
+    margin-bottom: 18px;
   }
 }
 @media only screen and (max-width: 530px) {
@@ -469,5 +506,33 @@ h4 {
   }
   .movie-details-info {
     width: 100%;
+  }
+}
+
+/* Animations */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes zipRight {
+  0% {
+    transform: translateX(-150px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
   }
 }

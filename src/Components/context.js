@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useReducer } from "react";
+import React, { useContext, useEffect, useState, useReducer } from "react";
 import reducer from "../reducer";
 
 const titleurl = "https://imdb-api.com/API/AdvancedSearch/k_h0i49j2g?title=";
@@ -18,6 +18,7 @@ const initialState = {
 };
 
 const AppProvider = ({ children }) => {
+  const [showGenres, setShowGenres] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const setSearchTerm = (term) => {
@@ -63,6 +64,8 @@ const AppProvider = ({ children }) => {
         fetchTitle,
         setSearchTerm,
         setGenre,
+        showGenres,
+        setShowGenres,
       }}
     >
       {children}

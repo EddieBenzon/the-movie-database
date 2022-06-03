@@ -1,13 +1,13 @@
 import React from "react";
-import MovieCard from "../Components/MovieCard";
-import { useGlobalContext } from "../Components/context";
-import Loading from "../Components/Loading";
+import MovieCard from "./MovieCard";
+import { useGlobalContext } from "./context";
+import Loading from "./Loading";
 
 const Genres = () => {
-  const { movies, setGenre, loading, headlineContent } = useGlobalContext();
+  const { setGenre } = useGlobalContext();
 
   return (
-    <div className="results-main">
+    <div className="genres-main">
       <h4>Browse by Genre</h4>
       <section className="genres-container">
         <button
@@ -75,18 +75,6 @@ const Genres = () => {
           Romance
         </button>
       </section>
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          <h4>{headlineContent}</h4>
-          <section className="movie-grid">
-            {movies.map((item) => {
-              return <MovieCard key={item.id} {...item} />;
-            })}
-          </section>
-        </>
-      )}
     </div>
   );
 };

@@ -6,7 +6,8 @@ import { useNavigate, Link } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { setSearchTerm, fetchTitle } = useGlobalContext();
+  const { setSearchTerm, fetchTitle, setShowGenres, showGenres } =
+    useGlobalContext();
   const refContainer = useRef(null);
   const refreshPage = (e) => {
     e.preventDefault();
@@ -17,6 +18,10 @@ const Navbar = () => {
     e.preventDefault();
     setSearchTerm(refContainer.current.value);
     fetchTitle(refContainer.current.value);
+    navigate("/");
+  };
+  const toggleGenres = () => {
+    setShowGenres(!showGenres);
     navigate("/");
   };
   return (
@@ -33,13 +38,9 @@ const Navbar = () => {
         </button>
       </form>
       <div className="btn-container">
-        <Link
-          to="/genres"
-          style={{ textDecoration: "none" }}
-          className="btn-link"
-        >
-          <span className="btn-genres">Genres</span>
-        </Link>
+        <span className="btn-genres" onClick={toggleGenres}>
+          Genres
+        </span>
         <Link
           to="/about"
           style={{ textDecoration: "none" }}
