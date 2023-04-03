@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState, useReducer } from "react";
 import reducer from "../reducer";
 
-const titleurl = "https://imdb-api.com/API/AdvancedSearch/k_h0i49j2g?title=";
+const apiKey = process.env.REACT_APP_API_KEY;
 
-const defaulturl = "https://imdb-api.com/en/API/MostPopularMovies/k_h0i49j2g";
+const titleurl = `https://imdb-api.com/API/AdvancedSearch/${apiKey}?title=`;
 
-const genreURL = `https://imdb-api.com/API/AdvancedSearch/k_h0i49j2g?title_type=feature,tv_movie&num_votes=10000,3000000&languages=en&sort=user_rating,desc&count=100`;
+const defaulturl = `https://imdb-api.com/en/API/MostPopularMovies/${apiKey}`;
+
+const genreURL = `https://imdb-api.com/API/AdvancedSearch/${apiKey}?title_type=feature,tv_movie&num_votes=10000,3000000&languages=en&sort=user_rating,desc&count=100`;
 
 const AppContext = React.createContext();
 
