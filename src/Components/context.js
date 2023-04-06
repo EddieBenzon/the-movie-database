@@ -28,31 +28,44 @@ const AppProvider = ({ children }) => {
   };
 
   const fetchTitle = async (searchTerm) => {
-    dispatch({ type: "LOADING" });
-    const res = await fetch(
-      `${titleurl}${searchTerm}&title_type=feature,tv_movie`
-    );
-    const data = await res.json();
-    const titleResults = await data.results;
-    titleResults.splice(50, 100);
-    dispatch({ type: "DISPLAY_TITLES", payload: titleResults });
+    try {
+      dispatch({ type: "LOADING" });
+      const res = await fetch(
+        `${titleurl}${searchTerm}&title_type=feature,tv_movie`
+      );
+      const data = await res.json();
+      const titleResults = await data.results;
+      titleResults.splice(50, 100);
+      dispatch({ type: "DISPLAY_TITLES", payload: titleResults });
+    } catch (error) {
+      console.log("There was a following error: ", error);
+    }
   };
 
   const fetchMostPopular = async () => {
-    dispatch({ type: "LOADING" });
-    const response = await fetch(defaulturl);
-    const data = await response.json();
-    const mostPopular = await [...data.items];
-    mostPopular.splice(50, 50);
-    dispatch({ type: "DISPLAY_DEFAULT", payload: mostPopular });
+    try {
+      dispatch({ type: "LOADING" });
+      const response = await fetch(defaulturl);
+      const data = await response.json();
+      const mostPopular = await [...data.items];
+      mostPopular.splice(50, 50);
+      dispatch({ type: "DISPLAY_DEFAULT", payload: mostPopular });
+    } catch (error) {
+      console.log("There was a following error: ", error);
+    }
   };
+
   const setGenre = async (x) => {
-    dispatch({ type: "SET_GENRE", payload: x });
-    dispatch({ type: "LOADING" });
-    const res = await fetch(`${genreURL}&genres=${x}`);
-    const data = await res.json();
-    const genreResults = await [...data.results];
-    dispatch({ type: "DISPLAY_GENRES", payload: genreResults });
+    try {
+      dispatch({ type: "SET_GENRE", payload: x });
+      dispatch({ type: "LOADING" });
+      const res = await fetch(`${genreURL}&genres=${x}`);
+      const data = await res.json();
+      const genreResults = await [...data.results];
+      dispatch({ type: "DISPLAY_GENRES", payload: genreResults });
+    } catch (error) {
+      console.log("There was a following error: ", error);
+    }
   };
 
   useEffect(() => {
