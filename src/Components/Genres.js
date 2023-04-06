@@ -19,7 +19,7 @@ const Genres = () => {
     <div className="genres-main">
       <h4>Browse by Genre</h4>
       <section className="genres-container">
-        {genreStrings.map((item) => {
+        {genreStrings.map((item, index) => {
           const newStr = item.charAt(0).toUpperCase() + item.slice(1);
           return (
             <button
@@ -27,6 +27,7 @@ const Genres = () => {
               type="submit"
               value={item}
               onClick={(e) => setGenre(e.target.value)}
+              key={index}
             >
               {newStr}
             </button>
